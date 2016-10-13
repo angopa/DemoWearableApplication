@@ -21,7 +21,8 @@ public class MainActivity extends Activity {
         FragmentTransaction transaction = manager.beginTransaction();
         CardFragment fragment = CardFragment.create(
                 getString(R.string.card_title),
-                getString(R.string.card_description));
+                getString(R.string.card_description),
+                R.drawable.landon_icon);
         transaction.add(R.id.frame_layout, fragment);
         transaction.commit();
     }
