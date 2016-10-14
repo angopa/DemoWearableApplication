@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
@@ -39,7 +41,27 @@ public class ConnectDevicesActivity extends Activity
     }
 
     public void buttonClickHandler(View view){
+        Button button = (Button) view;
+        String city = button.getText().toString();
+        senMessage(city);
+    }
 
+    private void senMessage(String city) {
+        if (mNode != null && googleApiClient != null){
+            Wearable.MessageApi.sendMessage(
+                    googleApiClient, mNode.getId(), WEAR_PATH, city.getBytes())
+                    .setResultCallback(new ResultCallback<MessageApi.SendMessageResult>() {
+                        @Override
+                        public void onResult(@NonNull MessageApi.SendMessageResult sendMessageResult) {
+                            if(!sendMessageResult.getStatus().isSuccess()){
+                                Log.d(WEARABLE_MAIN, "Failed message... "+
+                                        sendMessageResult.getStatus().getStatusCode());
+                            }else{
+                                Log.d(WEARABLE_MAIN, "Message succeded...");
+                            }
+                        }
+                    });
+        }
     }
 
     @Override
