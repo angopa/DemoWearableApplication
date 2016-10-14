@@ -7,4 +7,12 @@
     <string name="confirming">Confirming...</string>
     <string name="made_reservation">You made a reservation</string>
     <string name="tap_anywhere">Tap anywhere</string>
+
+    <string name="london">London</string>
+    <string name="hong_kong">Hong Kong</string>
+    <string name="paris">Paris</string>
+    <string name="san_francisco">San Francisco</string>
+    <string-array name="android_wear_capabilities">
+        <item>voice_transcription</item>
+    </string-array>
 </resources>
