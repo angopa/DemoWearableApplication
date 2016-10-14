@@ -9,6 +9,8 @@ import android.support.wearable.view.CardFragment;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -20,6 +22,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**
+         * We this lines for the ActionPage
+         */
         ActionPage actionPage = (ActionPage) findViewById(R.id.action_page);
         actionPage.setOnClickListener(new View.OnClickListener(){
             @Override
